@@ -1,0 +1,36 @@
+{
+  "name": "@nuel/fastify-next-lambda",
+  "version": "1.1.0",
+  "description": "Runs Next.js in Fastify, in Lambda",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prebuild": "rm -rf lib/",
+    "build": "uniformly build",
+    "prepare": "npm run build",
+    "build-layer": "bash ./deploy/scripts/build-layer.sh",
+    "prepublish-layer": "npm run build-layer",
+    "publish-layer": "torbjorn deploy -e prod",
+    "test": "uniformly test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/the-nuel/fastify-next-lambda.git"
+  },
+  "author": "Tom Davies <tom@thenuel.com>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@nuel/uniformly": "^2.1.0",
+    "@types/node": "^12.7.2",
+    "@types/send": "^0.14.4"
+  },
+  "dependencies": {
+    "aws-lambda-fastify": "^1.0.3",
+    "fastify": "^2.7.1",
+    "fastify-helmet": "^3.0.1",
+    "send": "^0.17.1",
+    "uuid": "^3.3.2"
+  }
+}
