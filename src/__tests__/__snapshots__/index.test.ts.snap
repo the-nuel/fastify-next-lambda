@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`handler returns dynamic content for dynamic pages 1`] = `
+Object {
+  "body": "<html><head></head><body>This is placeholder output</body></html>",
+  "headers": Object {
+    "connection": "keep-alive",
+    "content-security-policy": "default-src 'self', 'edge.thenuel.com'; upgrade-insecure-requests",
+    "date": Any<String>,
+    "strict-transport-security": "max-age=15552000; includeSubDomains",
+    "transfer-encoding": "chunked",
+    "x-content-security-policy": "default-src 'self', 'edge.thenuel.com'; upgrade-insecure-requests",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-nuel-region": "unknown",
+    "x-nuel-traceid": "dynamic.content",
+    "x-webkit-csp": "default-src 'self', 'edge.thenuel.com'; upgrade-insecure-requests",
+    "x-xss-protection": "1; mode=block",
+  },
+  "isBase64Encoded": false,
+  "statusCode": 200,
+}
+`;
+
+exports[`handler returns static content for static pages 1`] = `
+Object {
+  "body": "<!DOCTYPE html>
+<html>
+    <head>
+        <title>This is a test page</title>
+    </head>
+    <body>
+        This is some test content.
+    </body>
+</html>
+",
+  "headers": Object {
+    "accept-ranges": "bytes",
+    "cache-control": "public, max-age=0",
+    "connection": "keep-alive",
+    "content-length": 164,
+    "content-security-policy": "default-src 'self', 'edge.thenuel.com'; upgrade-insecure-requests",
+    "content-type": "text/html; charset=UTF-8",
+    "date": Any<String>,
+    "etag": "W/\\"a4-16c9be8f004\\"",
+    "last-modified": "Fri, 16 Aug 2019 19:30:30 GMT",
+    "strict-transport-security": "max-age=15552000; includeSubDomains",
+    "x-content-security-policy": "default-src 'self', 'edge.thenuel.com'; upgrade-insecure-requests",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-nuel-region": "unknown",
+    "x-nuel-traceid": "static.content",
+    "x-webkit-csp": "default-src 'self', 'edge.thenuel.com'; upgrade-insecure-requests",
+    "x-xss-protection": "1; mode=block",
+  },
+  "isBase64Encoded": false,
+  "statusCode": 200,
+}
+`;
+
+exports[`handler returns the 404 page if there is no route match 1`] = `
+Object {
+  "body": "<!DOCTYPE html>
+<html>
+    <head>
+        <title>Not found</title>
+    </head>
+    <body>
+        This page was not found.
+    </body>
+</html>
+",
+  "headers": Object {
+    "accept-ranges": "bytes",
+    "cache-control": "public, max-age=0",
+    "connection": "keep-alive",
+    "content-length": 152,
+    "content-security-policy": "default-src 'self', 'edge.thenuel.com'; upgrade-insecure-requests",
+    "content-type": "text/html; charset=UTF-8",
+    "date": Any<String>,
+    "etag": "W/\\"98-16c9bfed72a\\"",
+    "last-modified": "Fri, 16 Aug 2019 19:54:25 GMT",
+    "strict-transport-security": "max-age=15552000; includeSubDomains",
+    "x-content-security-policy": "default-src 'self', 'edge.thenuel.com'; upgrade-insecure-requests",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-nuel-region": "unknown",
+    "x-nuel-traceid": "not.found",
+    "x-webkit-csp": "default-src 'self', 'edge.thenuel.com'; upgrade-insecure-requests",
+    "x-xss-protection": "1; mode=block",
+  },
+  "isBase64Encoded": false,
+  "statusCode": 404,
+}
+`;
