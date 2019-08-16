@@ -1,0 +1,39 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: A Lambda layer that provides Next hosting with Fastify
+
+Parameters:
+  Environment:
+    Type: String
+    Description: >
+      The tag for environment the layer is deploying into.
+      Defaults to `dev`.
+    AllowedValues:
+      - dev
+      - test
+      - prod
+    ConstraintDescription: Environment must be either `dev`, `test` or `prod`.
+    Default: dev
+
+  Region:
+    Type: String
+    Description: >
+      The region the layer is being deployed into.
+
+  ServiceName:
+    Type: String
+    Description: The name of the service being deployed.
+
+
+Resources:
+
+  FastifyNextLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: !Sub "eng-shared-stable-fastify-next"
+      Description: Straightforward hosting of Next apps within Lambda
+      ContentUri: ../dist/
+      CompatibleRuntimes: 
+        - nodejs10.x
+      LicenseInfo: UNLICENSED
+      RetentionPolicy: Delete

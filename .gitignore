@@ -3,3 +3,4 @@ dist/layer/nodejs/node_modules/
 lib/
 dist/
 coverage/
+deploy/packaged.yml
