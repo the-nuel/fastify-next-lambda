@@ -37,7 +37,7 @@ export function buildNextRoutes() {
         .map(path => {
             const target = manifest[path];
             return {
-                route: path,
+                route: path.replace(/\[([a-z0-9]+)\]/gi, ":$1"),
                 handler: target.endsWith('.html')
                     ? buildStaticHandler(manifest[path])
                     : buildDynamicHandler(manifest[path]),

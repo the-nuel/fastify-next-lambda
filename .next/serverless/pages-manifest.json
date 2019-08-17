@@ -2,7 +2,7 @@
     "/_error": "pages/_error.js",
     "/about": "pages/serverless.js",
     "/index": "pages/index.html",
-    "/nested/[name]": "pages/nested/[name].html",
+    "/params/[age]/[name]": "pages/[age]/[name].html",
     "/": "pages/index.html",
     "/_app": "pages/_app.js",
     "/_document": "pages/_document.js",

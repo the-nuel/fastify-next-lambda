@@ -99,3 +99,41 @@ Object {
   "statusCode": 404,
 }
 `;
+
+exports[`handler support dynamic routing 1`] = `
+Object {
+  "body": "<!DOCTYPE html>
+<html>
+    <head>
+        <title>Parameterised page</title>
+    </head>
+    <body>
+        This is a parameterised page.
+    </body>
+</html>
+",
+  "headers": Object {
+    "accept-ranges": "bytes",
+    "cache-control": "public, max-age=0",
+    "connection": "keep-alive",
+    "content-length": 166,
+    "content-security-policy": "default-src 'self'; object-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; upgrade-insecure-requests; block-all-mixed-content",
+    "content-type": "text/html; charset=UTF-8",
+    "date": Any<String>,
+    "etag": "W/\\"a6-16ca0ac6f1b\\"",
+    "last-modified": "Sat, 17 Aug 2019 17:42:30 GMT",
+    "strict-transport-security": "max-age=15552000; includeSubDomains",
+    "x-content-security-policy": "default-src 'self'; object-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; upgrade-insecure-requests; block-all-mixed-content",
+    "x-content-type-options": "nosniff",
+    "x-dns-prefetch-control": "off",
+    "x-download-options": "noopen",
+    "x-frame-options": "SAMEORIGIN",
+    "x-nuel-region": "unknown",
+    "x-nuel-traceid": "dynamic.routing",
+    "x-webkit-csp": "default-src 'self'; object-src 'none'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; upgrade-insecure-requests; block-all-mixed-content",
+    "x-xss-protection": "1; mode=block",
+  },
+  "isBase64Encoded": false,
+  "statusCode": 200,
+}
+`;

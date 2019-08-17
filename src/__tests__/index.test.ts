@@ -32,6 +32,22 @@ describe('handler', () => {
             },
         });
     });
+    
+    it('support dynamic routing', async () => {
+        const response = await handler({
+            httpMethod: 'GET',
+            path: '/params/28/tom',
+            headers: {
+                'x-nuel-traceid': 'dynamic.routing',
+            },
+        });
+
+        expect(response).toMatchSnapshot({
+            headers: {
+                date: expect.any(String),
+            },
+        });
+    });
 
     it('returns the 404 page if there is no route match', async () => {
         const response = await handler({
