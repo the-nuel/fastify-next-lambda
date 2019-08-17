@@ -13,7 +13,7 @@ const manifest: { [key: string]: string } = require(path.join(
 export const buildStaticHandler = (page: string) => {
     return (req: FastifyRequest, reply: FastifyReply<ServerResponse>) => {
         const file = path.join(NEXT_SERVERLESS_ROOT, page);
-        req.log.info('serving static page', { file });
+        req.log.info({ file }, 'serving static page');
         send(req.raw, file).pipe(reply.res);
     };
 };
@@ -21,7 +21,7 @@ export const buildStaticHandler = (page: string) => {
 const buildDynamicHandler = (page: string) => {
     return (req: FastifyRequest, reply: FastifyReply<ServerResponse>) => {
         const file = path.join(NEXT_SERVERLESS_ROOT, page);
-        req.log.info('serving dynamic page', { file });
+        req.log.info({ file }, 'serving dynamic page');
 
         require(file)
             .render(req.raw, reply.res)
