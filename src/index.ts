@@ -30,8 +30,12 @@ const instance = fastify({
 instance.register(require('fastify-helmet'), {
     contentSecurityPolicy: {
         directives: {
-            defaultSrc: ["'self', 'edge.thenuel.com'"],
+            defaultSrc: ["'self'"],
+            objectSrc: ["'none'"],
+            styleSrc: ["'self'", 'https://fonts.googleapis.com'],
+            fontSrc: ["'self'", 'https://fonts.gstatic.com'],
             upgradeInsecureRequests: true,
+            blockAllMixedContent: true,
         },
     },
 });
