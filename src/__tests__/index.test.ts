@@ -102,3 +102,37 @@ describe('caching', () => {
         expect(response.headers['cache-control']).toBe('public, max-age=30');
     });
 });
+
+describe('csp', () => {
+    beforeEach(() => {
+        jest.resetModules();
+    });
+
+    afterEach(() => {
+        delete process.env.CSP_DEFAULT_SRC;
+        delete process.env.CSP_SCRIPT_SRC;
+        delete process.env.CSP_IMG_SRC;
+        delete process.env.CSP_STYLE_SRC;
+        delete process.env.CSP_FONT_SRC;
+        delete process.env.CSP_OBJECT_SRC;
+    });
+
+    it('sets CSP headers by default', async () => {
+        const handler = require('../index').handler;
+        const response = await handler({ httpMethod: 'GET', path: '/' });
+        expect(response.headers['content-security-policy']).toMatchSnapshot();
+    });
+
+    it('allows use of environment variables to set CSP directives', async () => {
+        process.env.CSP_DEFAULT_SRC = "'none'";
+        process.env.CSP_SCRIPT_SRC = "https://script.src, 'self'";
+        process.env.CSP_IMG_SRC = "https://img.src"
+        process.env.CSP_STYLE_SRC = "https://style.src, https://another.style.src";
+        process.env.CSP_FONT_SRC = "https://font.src";
+        process.env.CSP_OBJECT_SRC = "'self'";
+
+        const handler = require('../index').handler;
+        const response = await handler({ httpMethod: 'GET', path: '/' });
+        expect(response.headers['content-security-policy']).toMatchSnapshot();    
+    });
+});

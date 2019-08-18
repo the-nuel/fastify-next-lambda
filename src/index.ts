@@ -2,6 +2,7 @@ import fastify from 'fastify';
 import handleWithFastify from 'aws-lambda-fastify';
 import { buildNextRoutes, buildStaticHandler } from './utils/buildNextRoutes';
 import { IncomingMessage, ServerResponse } from 'http';
+import { buildCspDirectives } from './utils/buildCspDirectives';
 
 const instance = fastify({
     logger: {
@@ -29,14 +30,7 @@ const instance = fastify({
 
 instance.register(require('fastify-helmet'), {
     contentSecurityPolicy: {
-        directives: {
-            defaultSrc: ["'self'"],
-            objectSrc: ["'none'"],
-            styleSrc: ["'self'", 'https://fonts.googleapis.com'],
-            fontSrc: ["'self'", 'https://fonts.gstatic.com'],
-            upgradeInsecureRequests: true,
-            blockAllMixedContent: true,
-        },
+        directives: buildCspDirectives(process.env),
     },
 });
 
