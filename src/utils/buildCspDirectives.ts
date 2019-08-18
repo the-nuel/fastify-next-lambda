@@ -19,8 +19,7 @@ export function buildCspDirectives(source: { [key: string]: string }) {
         .reduce((directives, key) => {
             const directive = keyToDirectiveName(key);
             const value = stringToDirectiveValue(source[key]);
-            console.log(directive);
-            console.log(value);
+
             return {
                 [directive]: value,
                 ...directives,
